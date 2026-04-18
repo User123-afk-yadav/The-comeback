@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comeback System - 24/7 Domination Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            margin-bottom: 15px;
+        }
+
+        .quote-box {
+            background: rgba(83, 74, 183, 0.15);
+            border-left: 4px solid #534AB7;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+        }
+
+        .quote-text {
+            margin-bottom: 10px;
+        }
+
+        .quote-attr {
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            font-size: 1em;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #b0b0b0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-btn:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            color: #00d4ff;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #fff;
+            border-color: #00d4ff;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .metric-sub {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #00d4ff;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00d4ff;
+            border: 2px solid #1a1a2e;
+        }
+
+        .timeline-item.skill::before {
+            background: #00ff88;
+        }
+
+        .timeline-item.play::before {
+            background: #ff9d00;
+        }
+
+        .timeline-item.exercise::before {
+            background: #ff4757;
+        }
+
+        .timeline-item.rest::before {
+            background: #888;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 25px;
+            width: 2px;
+            height: 30px;
+            background: rgba(0, 212, 255, 0.3);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-time {
+            font-size: 0.9em;
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .timeline-title {
+            font-size: 1.1em;
+            color: #fff;
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            font-size: 0.9em;
+            color: #b0b0b0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .badge-study {
+            background: rgba(0, 180, 255, 0.2);
+            color: #00d4ff;
+        }
+
+        .badge-skill {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .badge-play {
+            background: rgba(255, 157, 0, 0.2);
+            color: #ff9d00;
+        }
+
+        .badge-exercise {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+        }
+
+        .badge-rest {
+            background: rgba(136, 136, 136, 0.2);
+            color: #aaa;
+        }
+
+        /* Checklist Styles */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .checklist-item.completed {
+            opacity: 0.6;
+        }
+
+        .checklist-item.completed .checklist-text {
+            text-decoration: line-through;
+            color: #666;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #00d4ff;
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item.completed .checkbox {
+            background: #00d4ff;
+            border-color: #00d4ff;
+        }
+
+        .checklist-item.completed .checkbox::after {
+            content: '✓';
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+
+        .checklist-text {
+            flex: 1;
+            color: #e0e0e0;
+        }
+
+        /* Streak Styles */
+        .streak-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .streak-day {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .streak-day:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .streak-day.active {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            border-color: #00d4ff;
+            color: #fff;
+        }
+
+        /* Progress Bar Styles */
+        .progress-item {
+            margin-bottom: 15px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            color: #b0b0b0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #0099ff);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Distraction Shield Styles */
+        .danger-card {
+            background: rgba(255, 71, 87, 0.1);
+            border-left: 4px solid #ff4757;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .danger-title {
+            color: #ff4757;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .distraction-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #ff4757;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .distraction-name {
+            color: #ff4757;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .distraction-desc {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .reason-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .reason-tag {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        /* Replacement Protocol */
+        .replacement-item {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 3px solid #00ff88;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .replacement-trigger {
+            color: #ff9d00;
+            font-size: 0.85em;
+            margin-bottom: 3px;
+        }
+
+        .replacement-action {
+            color: #00ff88;
+            font-weight: 500;
+        }
+
+        /* Analysis Styles */
+        .score-box {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .score-num {
+            font-size: 4em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-label {
+            color: #b0b0b0;
+            margin-top: 10px;
+        }
+
+        .analysis-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .analysis-item:last-child {
+            border-bottom: none;
+        }
+
+        .analysis-label {
+            color: #b0b0b0;
+        }
+
+        .analysis-value {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .status-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .status-ok {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .status-warning {
+            background: rgba(255, 157, 0, 0.2);
+            color: #ff9d00;
+        }
+
+        /* Why It Works */
+        .reason-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .reason-item:last-child {
+            border-bottom: none;
+        }
+
+        .reason-check {
+            color: #00ff88;
+            font-weight: bold;
+            min-width: 20px;
+        }
+
+        .reason-text {
+            color: #d0d0d0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+
+            .streak-grid {
+                grid-template-columns: repeat(7, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🚀 COMEBACK SYSTEM</h1>
+            <p>Elite 24/7 Domination Plan - Wake at 3 AM, Change Your Life</p>
+            <div class="quote-box">
+                <div class="quote-text">"You don't rise to the level of your goals. You fall to the level of your systems."</div>
+                <div class="quote-attr">— James Clear, Atomic Habits</div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab(0)">📅 Schedule</button>
+            <button class="tab-btn" onclick="switchTab(1)">✅ Daily Tracker</button>
+            <button class="tab-btn" onclick="switchTab(2)">🛡️ Distraction Shield</button>
+            <button class="tab-btn" onclick="switchTab(3)">📊 System Analysis</button>
+        </div>
+
+        <!-- TAB 0: Schedule -->
+        <div class="tab-content active" id="tab-0">
+            <div class="section-title">Daily Metrics</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Wake Up</div>
+                    <div class="metric-value">3:00</div>
+                    <div class="metric-sub">AM daily</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Study</div>
+                    <div class="metric-value">10 hr</div>
+                    <div class="metric-sub">deep work</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Skills</div>
+                    <div class="metric-value">2 hr</div>
+                    <div class="metric-sub">building</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Play</div>
+                    <div class="metric-value">2 hr</div>
+                    <div class="metric-sub">recovery</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Exercise</div>
+                    <div class="metric-value">1.5 hr</div>
+                    <div class="metric-sub">fitness</div>
+                </div>
+            </div>
+
+            <div class="section-title">Full Daily Timeline</div>
+            <div class="card">
+                <div class="timeline" id="timeline">
+                    <!-- Timeline items will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 1: Daily Tracker -->
+        <div class="tab-content" id="tab-1">
+            <div class="section-title">Today's Blocks - Tap to Mark Done</div>
+            <div class="card">
+                <ul class="checklist" id="checklist">
+                    <!-- Checklist items will be generated by JavaScript -->
+                </ul>
+            </div>
+
+            <div class="section-title">21-Day Streak Builder</div>
+            <div class="card">
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Tap days you completed. Build the chain — don't break it.</p>
+                <div class="streak-grid" id="streak">
+                    <!-- Streak days will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="section-title">Today's Progress</div>
+            <div class="card" id="progress">
+                <!-- Progress bars will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- TAB 2: Distraction Shield -->
+        <div class="tab-content" id="tab-2">
+            <div class="danger-card">
+                <div class="danger-title">⚠️ Distraction Shield - Zero Tolerance</div>
+                <p style="color: #b0b0b0;">These habits drain dopamine, destroy focus, and kill momentum. Treat them as non-negotiable rules, not suggestions.</p>
+            </div>
+
+            <div class="section-title">The 5 Enemies of Your Comeback</div>
+            <div class="card" id="distractions">
+                <!-- Distraction items will be generated by JavaScript -->
+            </div>
+
+            <div class="section-title">Replacement Protocols</div>
+            <div class="card" id="replacements">
+                <!-- Replacement items will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- TAB 3: System Analysis -->
+        <div class="tab-content" id="tab-3">
+            <div class="score-box">
+                <div class="score-num" id="scoreNum">0</div>
+                <div class="score-label">Comeback Score (out of 100)</div>
+            </div>
+
+            <div class="section-title">System Breakdown</div>
+            <div class="card" id="analysis">
+                <!-- Analysis items will be generated by JavaScript -->
+            </div>
+
+            <div class="section-title">Weekly Time Allocation</div>
+            <div class="card" id="weekAllocation">
+                <!-- Weekly allocation will be generated by JavaScript -->
+            </div>
+
+            <div class="section-title">Why This System Works</div>
+            <div class="card" id="whyWorks">
+                <!-- Why it works items will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>💪 Your comeback starts NOW. No excuses. No distractions. Just discipline.</p>
+    </footer>
+
+    <script>
+        // Schedule Data
+        const schedule = [
+            { time: "3:00 AM", title: "Wake up + cold water", desc: "No phone. Drink 500ml water immediately.", type: "rest", duration: 20 },
+            { time: "3:20 AM", title: "Morning ritual", desc: "Brush, freshen up, 5 min journaling — write today's #1 goal.", type: "rest", duration: 25 },
+            { time: "3:45 AM", title: "Study block 1", desc: "Hardest subject first. Deep focus. No interruptions.", type: "study", duration: 150 },
+            { time: "6:15 AM", title: "Short break", desc: "Walk outside, 10 min sunlight. No screen.", type: "rest", duration: 15 },
+            { time: "6:30 AM", title: "Study block 2", desc: "Continue — practice problems, active recall.", type: "study", duration: 150 },
+            { time: "9:00 AM", title: "Exercise", desc: "Gym / run / calisthenics. Pushups, pull-ups, cardio.", type: "exercise", duration: 90 },
+            { time: "10:30 AM", title: "Shower + nutrition", desc: "Protein-rich meal. Hydrate well.", type: "rest", duration: 30 },
+            { time: "11:00 AM", title: "Study block 3", desc: "Review morning notes, spaced repetition.", type: "study", duration: 120 },
+            { time: "1:00 PM", title: "Lunch + real rest", desc: "Eat properly. 20 min nap optional. No reels.", type: "rest", duration: 60 },
+            { time: "2:00 PM", title: "Skill building block 1", desc: "Coding / communication / finance / any target skill.", type: "skill", duration: 60 },
+            { time: "3:00 PM", title: "Study block 4", desc: "Toughest concepts. Solve past papers.", type: "study", duration: 90 },
+            { time: "4:30 PM", title: "Skill building block 2", desc: "Projects, practice, build real output.", type: "skill", duration: 60 },
+            { time: "5:30 PM", title: "Play / free time", desc: "Games, music, friends — full recharge. No guilt.", type: "play", duration: 120 },
+            { time: "7:30 PM", title: "Study block 5 (review)", desc: "Revise everything from today. Make notes.", type: "study", duration: 60 },
+            { time: "8:30 PM", title: "Wind down", desc: "Light reading or walk. Plan tomorrow. Gratitude.", type: "rest", duration: 30 },
+            { time: "9:00 PM", title: "Sleep", desc: "Lights out. No screen 30 min before bed.", type: "rest", duration: 360 },
+        ];
+
+        // Checklist Data
+        const checklistItems = [
+            "Woke up at 3:00 AM",
+            "Morning ritual done (no phone)",
+            "Study block 1 completed (3:45–6:15)",
+            "Study block 2 completed (6:30–9:00)",
+            "Exercise session done (1.5 hr)",
+            "Study block 3 completed (11:00–1:00)",
+            "Skill building block 1 done (1 hr)",
+            "Study block 4 completed (3:00–4:30)",
+            "Skill building block 2 done (1 hr)",
+            "Play / free time used well (2 hr)",
+            "Study review done (7:30–8:30)",
+            "Zero scrolling / reels today",
+            "Zero PMO today",
+            "In bed by 9:00 PM",
+        ];
+
+        // Distraction Data
+        const distractions = [
+            { icon: "↑", name: "Short-form reels / scrolling", desc: "Instagram, YouTube Shorts, TikTok", reasons: ["kills attention span", "hijacks dopamine", "wastes hours"] },
+            { icon: "◉", name: "Pornography", desc: "Any explicit content", reasons: ["destroys motivation", "lowers testosterone", "creates brain fog"] },
+            { icon: "✦", name: "Masturbation / PMO cycle", desc: "Drain on energy and drive", reasons: ["depletes vital energy", "reduces ambition", "triggers shame loop"] },
+            { icon: "◈", name: "Mindless web browsing", desc: "News, gossip, random tabs", reasons: ["fragments focus", "creates anxiety", "zero output"] },
+            { icon: "♫", name: "Excessive social media", desc: "Comparing yourself to others", reasons: ["kills confidence", "creates FOMO", "time sink"] },
+        ];
+
+        // Replacement Protocols
+        const replacements = [
+            { trigger: "Urge to scroll", action: "Do 20 pushups immediately. Then drink water." },
+            { trigger: "PMO urge", action: "Cold shower (2 min). Go outside for a walk." },
+            { trigger: "Boredom during study", action: "Switch subject. 5-min walk. Come back." },
+            { trigger: "Want to check phone", action: "Phone in another room during study blocks." },
+            { trigger: "Feeling unmotivated", action: "Re-read your goal. Do 10 min of anything. Momentum follows action." },
+        ];
+
+        // Build Timeline
+        function buildTimeline() {
+            const timeline = document.getElementById('timeline');
+            schedule.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = `timeline-item ${item.type}`;
+                const badgeType = item.type === 'exercise' ? 'exercise' : item.type;
+                const badgeClass = `badge badge-${badgeType}`;
+                const badgeText = item.type.charAt(0).toUpperCase() + item.type.slice(1);
+                timelineItem.innerHTML = `
+                    <div class="timeline-time">${item.time}</div>
+                    <div class="timeline-title">${item.title}</div>
+                    <div class="timeline-desc">${item.desc}</div>
+                    <span class="${badgeClass}">${badgeText}</span>
+                `;
+                timeline.appendChild(timelineItem);
+            });
+        }
+
+        // Build Checklist
+        function buildChecklist() {
+            const checklist = document.getElementById('checklist');
+            checklistItems.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'checklist-item';
+                li.innerHTML = `
+                    <div class="checkbox"></div>
+                    <div class="checklist-text">${item}</div>
+                `;
+                li.onclick = function() {
+                    this.classList.toggle('completed');
+                    updateProgress();
+                };
+                checklist.appendChild(li);
+            });
+        }
+
+        // Build Streak
+        function buildStreak() {
+            const streak = document.getElementById('streak');
+            for (let i = 1; i <= 21; i++) {
+                const day = document.createElement('div');
+                day.className = 'streak-day';
+                day.textContent = i;
+                day.onclick = function() {
+                    this.classList.toggle('active');
+                };
+                streak.appendChild(day);
+            }
+        }
+
+        // Build Progress
+        function updateProgress() {
+            const checklist = document.getElementById('checklist');
+            const completed = checklist.querySelectorAll('.checklist-item.completed').length;
+            const total = checklistItems.length;
+
+            const categories = [
+                { label: "Study (5 blocks)", ids: [2, 4, 7, 10, 13], color: "#00d4ff" },
+                { label: "Skill building", ids: [6, 8], color: "#00ff88" },
+                { label: "Exercise", ids: [4], color: "#ff4757" },
+                { label: "Discipline", ids: [0, 1, 11, 12, 13], color: "#534AB7" },
+            ];
+
+            const progress = document.getElementById('progress');
+            progress.innerHTML = '';
+
+            categories.forEach(cat => {
+                const progressItem = document.createElement('div');
+                progressItem.className = 'progress-item';
+
+                const items = checklist.querySelectorAll('.checklist-item');
+                let catCompleted = 0;
+                cat.ids.forEach(id => {
+                    if (items[id] && items[id].classList.contains('completed')) {
+                        catCompleted++;
+                    }
+                });
+
+                const percentage = Math.round((catCompleted / cat.ids.length) * 100);
+
+                progressItem.innerHTML = `
+                    <div class="progress-label">
+                        <span>${cat.label}</span>
+                        <span>${percentage}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${percentage}%; background: ${cat.color};"></div>
+                    </div>
+                `;
+                progress.appendChild(progressItem);
+            });
+        }
+
+        // Build Distractions
+        function buildDistractions() {
+            const distractionsDiv = document.getElementById('distractions');
+            distractions.forEach(d => {
+                const item = document.createElement('div');
+                item.className = 'distraction-item';
+                const reasonsHtml = d.reasons.map(r => `<span class="reason-tag">${r}</span>`).join('');
+                item.innerHTML = `
+                    <div style="display: flex; gap: 10px;">
+                        <div style="font-size: 1.5em;">${d.icon}</div>
+                        <div style="flex: 1;">
+                            <div class="distraction-name">${d.name}</div>
+                            <div class="distraction-desc">${d.desc}</div>
+                            <div class="reason-tags">${reasonsHtml}</div>
+                        </div>
+                    </div>
+                `;
+                distractionsDiv.appendChild(item);
+            });
+        }
+
+        // Build Replacements
+        function buildReplacements() {
+            const replacementsDiv = document.getElementById('replacements');
+            replacements.forEach(r => {
+                const item = document.createElement('div');
+                item.className = 'replacement-item';
+                item.innerHTML = `
+                    <div class="replacement-trigger">WHEN: ${r.trigger}</div>
+                    <div class="replacement-action">→ ${r.action}</div>
+                `;
+                replacementsDiv.appendChild(item);
+            });
+        }
+
+        // Build Analysis
+        function buildAnalysis() {
+            const analysisDiv = document.getElementById('analysis');
+            const items = [
+                { label: "Wake time (3 AM)", val: "Elite tier", status: "ok" },
+                { label: "Total study hours/day", val: "10 hr — exceptional", status: "ok" },
+                { label: "Study blocks (5 sessions)", val: "Optimal spaced learning", status: "ok" },
+                { label: "Exercise (1.5 hr)", val: "Perfect for discipline + health", status: "ok" },
+                { label: "Skill building (2 hr)", val: "Future-proofing built in", status: "ok" },
+                { label: "Play/recovery (2 hr)", val: "Critical — prevents burnout", status: "ok" },
+                { label: "Sleep window", val: "9 PM–3 AM = 6 hr", status: "warning" },
+                { label: "Distraction plan", val: "Zero tolerance protocol", status: "ok" },
+                { label: "Total productive hours", val: "15.5 hr/day", status: "ok" },
+            ];
+
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'analysis-item';
+                const statusTag = `<span class="status-tag status-${item.status}">${item.status === 'ok' ? 'strong' : 'monitor'}</span>`;
+                div.innerHTML = `
+                    <div class="analysis-label">${item.label}</div>
+                    <div>
+                        <span class="analysis-value">${item.val}</span>
+                        ${statusTag}
+                    </div>
+                `;
+                analysisDiv.appendChild(div);
+            });
+        }
+
+        // Build Weekly Allocation
+        function buildWeekAllocation() {
+            const weekDiv = document.getElementById('weekAllocation');
+            const categories = [
+                { label: "Study", hours: 70, color: "#00d4ff" },
+                { label: "Skill building", hours: 14, color: "#00ff88" },
+                { label: "Play", hours: 14, color: "#ff9d00" },
+                { label: "Exercise", hours: 10.5, color: "#ff4757" },
+                { label: "Sleep", hours: 42, color: "#888" },
+            ];
+
+            categories.forEach(cat => {
+                const item = document.createElement('div');
+                item.className = 'progress-item';
+                const percentage = Math.round((cat.hours / 168) * 100);
+                item.innerHTML = `
+                    <div class="progress-label">
+                        <span>${cat.label}</span>
+                        <span>${cat.hours} hr/week</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${percentage}%; background: ${cat.color};"></div>
+                    </div>
+                `;
+                weekDiv.appendChild(item);
+            });
+        }
+
+        // Build Why It Works
+        function buildWhyWorks() {
+            const whyDiv = document.getElementById('whyWorks');
+            const reasons = [
+                "3 AM wake time gives 6 uninterrupted deep work hours before distractions begin",
+                "5 study blocks use spaced repetition — proven to increase retention by 200%",
+                "Exercise in the morning floods brain with BDNF — the molecule that makes learning stick",
+                "2 hr genuine play prevents burnout and sustains the system long-term",
+                "Zero tolerance distraction policy protects your dopamine system — the engine of motivation",
+                "10 hr study/day over 6 months = 1,800 hours — world-class expertise in any field",
+            ];
+
+            reasons.forEach(reason => {
+                const item = document.createElement('div');
+                item.className = 'reason-item';
+                item.innerHTML = `
+                    <div class="reason-check">✓</div>
+                    <div class="reason-text">${reason}</div>
+                `;
+                whyDiv.appendChild(item);
+            });
+        }
+
+        // Animate Score
+        function animateScore() {
+            let score = 0;
+            const target = 97;
+            const scoreNum = document.getElementById('scoreNum');
+            const interval = setInterval(() => {
+                score += 2;
+                if (score >= target) {
+                    score = target;
+                    clearInterval(interval);
+                }
+                scoreNum.textContent = score;
+            }, 20);
+        }
+
+        // Switch Tabs
+        function switchTab(tabIndex) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(`tab-${tabIndex}`).classList.add('active');
+            buttons[tabIndex].classList.add('active');
+
+            // Animate score when analysis tab is opened
+            if (tabIndex === 3) {
+                setTimeout(() => animateScore(), 300);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            buildTimeline();
+            buildChecklist();
+            buildStreak();
+            buildDistractions();
+            buildReplacements();
+            buildAnalysis();
+            buildWeekAllocation();
+            buildWhyWorks();
+        });
+    </script>
+</body>
+</html>
